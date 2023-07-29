@@ -31,43 +31,51 @@
         padding: 10px 150px;
     }
 
-    .sidebar {
+    .navbar{
         display: flex;
-        align-items: center;
         position: fixed;
-        height: 50px;
         top: 0;
         left: 0;
         right: 0;
+        height: 60px;
+        /* background-color: rgb(58, 63, 67); */
         background-color: #eee;
     }
 
-    .sidebar-logo{
+    .logo-container{
+        /* background-color: snow; */
+        border-radius: 15px;
+        width: 55px;
+        height: 55px;
+        margin: 2.5px;
+        padding: 2px;
+        box-sizing:border-box;
+    }
+
+    .logo{
         height: 100%;
+    }
+
+    .sidebar {
         display: flex;
+        justify-content: space-between;
         align-items: center;
-        padding: 0 10px;
-    }
-
-    .sidebar-logo img{
+        margin: auto;
+        transform: translateX(-30px);
+        width: calc(100% - 300px);
         height: 100%;
-    }
-
-    .sidebar-logo span{
-        font-weight: 600;
-        font-size: 16px;
     }
 
     .sidebar button {
+        flex: 1;
         border: none;
-        height: 100%;
         font-size: 16px;
-        width: fit-content;
-        padding: 0 20px;
+        height: 90%;
+        border-radius: 5px;
     }
 
     .sidebar button i{
-        margin-right: 5px;
+        margin-right: 10px;
     }
 
     .sidebar button+button {
@@ -76,7 +84,7 @@
 
     .content {
         display: none;
-        margin-top: 50px;
+        margin-top: 55px;
     }
 
     .content.active {
@@ -136,37 +144,37 @@
         background-color: #98D0B9;
     }
 
-    .stock-menu-option + .stock-menu-option{
-        border-left: 1px solid darkgray;
-    }
-
 
 </style>
 
 <body>
     <div class="page">
-        <div class="sidebar">
-            <div class="sidebar-logo">
-                <img src="NHInvest.png" alt="" />
-                <!-- <span>
-                    NHInvest
-                </span> -->
+        <div class="navbar">
+            <div class="logo-container">
+                <img class="logo" src="NHInvest.png" alt="" />
             </div>
-            <button class="tablink active" onclick="openTab(event, 'market')">
-                <i class="bi bi-graph-up-arrow"></i>
-                Thị trường
-            </button>
-            <button class="tablink" onclick="openTab(event, 'stock')">
-                <i class="bi bi-coin"></i>
-                Chứng khoán
-            </button>
-            <!-- <button class="tablink" onclick="openTab(event, 'industry')">
-                <i class="bi bi-stack"></i>
-                Ngành
-            </button> -->
+            <div class="sidebar">
+                <button class="tablink active" onclick="openTab(event, 'market')">
+                    <i class="bi bi-graph-up-arrow"></i>
+                    Thị trường
+                </button>
+                <button class="tablink" onclick="openTab(event, 'stock')">
+                    <i class="bi bi-coin"></i>
+                    Chứng khoán
+                </button>
+                <!-- <button class="tablink" onclick="openTab(event, 'industry')">
+                    <i class="bi bi-stack"></i>
+                    Ngành
+                </button> -->
+            </div>
         </div>
 
-        <div id="stock-tabView" class="content active">
+        <div id="market-tabView" class="content active">
+            <iframe class="dashboard"
+                src="https://app.powerbi.com/reportEmbed?reportId=34db9860-0e75-461d-9295-fc8814a8de4b&autoAuth=true&ctid=04735073-7d4c-4821-b25b-d1eb37e67057&navContentPaneEnabled=false&filterPaneEnabled=false&pageName=ReportSection"
+                frameborder="0" allowFullScreen="true"></iframe>
+        </div>
+        <div id="stock-tabView" class="content">
             <div class="stock-menu">
                 <button class="stock-menu-option active" onclick="openSubTab(event, 'overview')">
                     <i class="bi bi-aspect-ratio"></i>
@@ -212,14 +220,9 @@
                 </div>
             </div>
         </div>
-        <!-- <div id="industry-tabView" class="content">
+        <div id="industry-tabView" class="content">
             <iframe class="dashboard"
                 src="https://app.powerbi.com/reportEmbed?reportId=34db9860-0e75-461d-9295-fc8814a8de4b&autoAuth=true&ctid=04735073-7d4c-4821-b25b-d1eb37e67057&navContentPaneEnabled=false&filterPaneEnabled=false&pageName=ReportSection0d2314de4d94a5cea402"
-                frameborder="0" allowFullScreen="true"></iframe>
-        </div> -->
-        <div id="market-tabView" class="content">
-            <iframe class="dashboard"
-                src="https://app.powerbi.com/reportEmbed?reportId=34db9860-0e75-461d-9295-fc8814a8de4b&autoAuth=true&ctid=04735073-7d4c-4821-b25b-d1eb37e67057&navContentPaneEnabled=false&filterPaneEnabled=false&pageName=ReportSection"
                 frameborder="0" allowFullScreen="true"></iframe>
         </div>
     </div>

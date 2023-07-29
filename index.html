@@ -33,20 +33,41 @@
 
     .sidebar {
         display: flex;
-        justify-content: space-between;
-        margin-bottom: 15px;
+        align-items: center;
+        position: fixed;
+        height: 50px;
+        top: 0;
+        left: 0;
+        right: 0;
+        background-color: #eee;
     }
 
-    .sidebar button {
-        flex: 1;
-        border: none;
-        height: 40px;
-        border-radius: 5px;
+    .sidebar-logo{
+        height: 100%;
+        display: flex;
+        align-items: center;
+        padding: 0 10px;
+    }
+
+    .sidebar-logo img{
+        height: 100%;
+    }
+
+    .sidebar-logo span{
+        font-weight: 600;
         font-size: 16px;
     }
 
+    .sidebar button {
+        border: none;
+        height: 100%;
+        font-size: 16px;
+        width: fit-content;
+        padding: 0 20px;
+    }
+
     .sidebar button i{
-        margin-right: 10px;
+        margin-right: 5px;
     }
 
     .sidebar button+button {
@@ -55,6 +76,7 @@
 
     .content {
         display: none;
+        margin-top: 50px;
     }
 
     .content.active {
@@ -114,24 +136,34 @@
         background-color: #98D0B9;
     }
 
+    .stock-menu-option + .stock-menu-option{
+        border-left: 1px solid darkgray;
+    }
+
 
 </style>
 
 <body>
     <div class="page">
         <div class="sidebar">
-            <button class="tablink active" onclick="openTab(event, 'stock')">
-                <i class="bi bi-coin"></i>
-                Chứng khoán
-            </button>
-            <button class="tablink" onclick="openTab(event, 'industry')">
-                <i class="bi bi-stack"></i>
-                Ngành
-            </button>
+            <div class="sidebar-logo">
+                <img src="NHInvest.png" alt="" />
+                <!-- <span>
+                    NHInvest
+                </span> -->
+            </div>
             <button class="tablink" onclick="openTab(event, 'market')">
                 <i class="bi bi-graph-up-arrow"></i>
                 Thị trường
             </button>
+            <button class="tablink active" onclick="openTab(event, 'stock')">
+                <i class="bi bi-coin"></i>
+                Chứng khoán
+            </button>
+            <!-- <button class="tablink" onclick="openTab(event, 'industry')">
+                <i class="bi bi-stack"></i>
+                Ngành
+            </button> -->
         </div>
 
         <div id="stock-tabView" class="content active">
@@ -180,11 +212,11 @@
                 </div>
             </div>
         </div>
-        <div id="industry-tabView" class="content">
+        <!-- <div id="industry-tabView" class="content">
             <iframe class="dashboard"
                 src="https://app.powerbi.com/reportEmbed?reportId=34db9860-0e75-461d-9295-fc8814a8de4b&autoAuth=true&ctid=04735073-7d4c-4821-b25b-d1eb37e67057&navContentPaneEnabled=false&filterPaneEnabled=false&pageName=ReportSection0d2314de4d94a5cea402"
                 frameborder="0" allowFullScreen="true"></iframe>
-        </div>
+        </div> -->
         <div id="market-tabView" class="content">
             <iframe class="dashboard"
                 src="https://app.powerbi.com/reportEmbed?reportId=34db9860-0e75-461d-9295-fc8814a8de4b&autoAuth=true&ctid=04735073-7d4c-4821-b25b-d1eb37e67057&navContentPaneEnabled=false&filterPaneEnabled=false&pageName=ReportSection"
